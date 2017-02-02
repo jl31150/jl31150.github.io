@@ -18,6 +18,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link rel="stylesheet" href="/assets/main.css">
   
+  
   <link rel="stylesheet" href="/assets/playground01.css">
   
   
@@ -356,9 +357,8 @@
     !function(a){var b=a.querySelectorAll(".bt"),c=a.querySelector("#player"),d="";[].slice.call(b).forEach(function(b,e){b.addEventListener("click",function(b){d=this.getAttribute("data-exp");var e=a.querySelector("."+d+" .item").cloneNode(!0);c.appendChild(e),c.classList.add(d),c.classList.add("on"),b.preventDefault()})}),c.addEventListener("click",function(b){this.classList.remove("on"),this.classList.remove(d),this.removeChild(a.querySelector("#player .item")),b.preventDefault()})}(document);
   </script>
 
-    <script src="/assets/wow.min.js"></script>
-<script type="text/javascript">
-!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(a,b){a.addEventListener("click",function(a){a.preventDefault(),c.classList.toggle("menu-opened")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);var wow=new WOW({boxClass:"wow",animateClass:"animated",offset:0,mobile:!0,live:!0,scrollContainer:null});wow.init();
+    <script type="text/javascript">
+!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(b,d){b.addEventListener("click",function(b){b.preventDefault(),c.classList.toggle("menu-opened"),a.body.classList.toggle("overflowh")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);
 </script>
 
 <script>

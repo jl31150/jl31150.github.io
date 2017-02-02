@@ -18,6 +18,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link rel="stylesheet" href="/assets/main.css">
   
+  <link rel="stylesheet" href="/assets/playground00.css">
+  
+  
   
   <link rel="stylesheet" href="/assets/animate.min.css">
   <link rel="canonical" href="https://thekaable.github.io/playground/triangle-delaunay/">
@@ -64,9 +67,8 @@
 !function(a){function h(a){switch(a){case 1:this.x=0,this.y=0,this.dx=1,this.dy=-1;break;case 2:this.x=window.innerWidth,this.y=0,this.dx=1,this.dy=-1;break;case 3:this.x=window.innerWidth,this.y=window.innerHeight,this.dx=-1,this.dy=-1;break;case 4:this.x=0,this.y=window.innerHeight,this.dx=-1,this.dy=-1}}function j(){this.x=Math.floor(Math.random()*e),this.y=Math.floor(Math.random()*f),this.dx=2*Math.floor(2*Math.random())-1,this.dy=2*Math.floor(2*Math.random())-1}function k(){e=window.innerWidth,f=window.innerHeight,canvas.width=e,canvas.height=f}function l(){for(b=canvas.getContext("2d"),k(),d.push(new h(1)),d.push(new h(2)),d.push(new h(3)),d.push(new h(4)),i=4;i<c;i++)d.push(new j);setInterval(n,70)}function m(){for(i=4;i<c;i++){var a=d[i];(a.x<0||a.x>e)&&(a.dx=-a.dx),(a.y<0||a.y>f)&&(a.dy=-a.dy),a.x+=a.dx,a.y+=a.dy}var b=d.map(function(a){return[a.x,a.y]});g=new o({noiseIntensity:0,format:"png",points:b}),g.generate(e,f)}function n(){b.clearRect(0,0,e,f),m()}function o(a){function b(a,b){return"undefined"!=typeof a?a:b}"undefined"==typeof a&&(a={}),this.options={cellsize:b(a.cellsize,150),bleed:b(a.cellsize,150),cellpadding:b(a.cellpadding,.1*a.cellsize||15),fillOpacity:b(a.fillOpacity,1),strokeOpacity:b(a.strokeOpacity,1),points:b(a.points,!1)}}var b,e,f,g,c=60,d=[];a.addEventListener("DOMContentLoaded",l),window.addEventListener("resize",k,!1),o.prototype.generate=function(a,b){return new o.Pattern(this.options,a,b)},o.Pattern=function(a,b,c){this.options=a,this.width=b,this.height=c,this.polys=this.generatePolygons(),this.canvas=this.generateCanvas()},o.Pattern.prototype.generatePolygons=function(){var a=this.options;if(a.points)return d3.geom.delaunay(a.points);var b=Math.ceil((this.width+2*a.bleed)/a.cellsize),c=Math.ceil((this.height+2*a.bleed)/a.cellsize),d=d3.range(b*c).map(function(c){var d=c%b,e=Math.floor(c/b),f=-a.bleed+d*a.cellsize+Math.random()*(a.cellsize-2*a.cellpadding)+a.cellpadding,g=-a.bleed+e*a.cellsize+Math.random()*(a.cellsize-2*a.cellpadding)+a.cellpadding;return[f,g]});return d3.geom.delaunay(d)},o.Pattern.prototype.generateCanvas=function(){return this.polys.forEach(function(a){(a[0][0]+a[1][0]+a[2][0])/3,(a[0][1]+a[1][1]+a[2][1])/3;b.beginPath(),b.moveTo(a[0][0],a[0][1]),b.lineTo(a[1][0],a[1][1]),b.lineTo(a[2][0],a[2][1]),b.closePath(),b.lineWidth=.4,b.fillStyle="rgba(0,0,0,0)",b.fill(),b.strokeStyle="rgba(256,256,256,0.4)",b.stroke(),b.beginPath(),b.arc(a[1][0],a[1][1],5,0,2*Math.PI),b.fillStyle="rgba(256,256,256,1)",b.fill()}),canvas}}(document);
   </script>
 
-    <script src="/assets/wow.min.js"></script>
-<script type="text/javascript">
-!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(a,b){a.addEventListener("click",function(a){a.preventDefault(),c.classList.toggle("menu-opened")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);var wow=new WOW({boxClass:"wow",animateClass:"animated",offset:0,mobile:!0,live:!0,scrollContainer:null});wow.init();
+    <script type="text/javascript">
+!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(b,d){b.addEventListener("click",function(b){b.preventDefault(),c.classList.toggle("menu-opened"),a.body.classList.toggle("overflowh")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);
 </script>
 
 <script>

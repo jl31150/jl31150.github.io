@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   
   
+  
   <link rel="stylesheet" href="/assets/animate.min.css">
   <link rel="canonical" href="https://thekaable.github.io/veille-technologique/">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -331,13 +332,14 @@
    </div>
     </div>
   </main>
+  <script src="/assets/wow.min.js"></script>
   <script type="text/javascript">
-!function(a){var b=a.querySelectorAll(".post-tag"),c=a.querySelectorAll(".one-post"),d=function(a,c){[].slice.call(b).forEach(function(a,b){a.classList.remove("selected")}),"hide"==c?[].slice.call(a).forEach(function(a,b){a.classList.add("hide"),a.style.visibility="hidden"}):[].slice.call(a).forEach(function(a,b){a.classList.remove("hide"),a.style.visibility="visible"})};[].slice.call(b).forEach(function(b,e){b.addEventListener("click",function(b){b.preventDefault(),this.classList.contains("selected")?(d(c,"show"),this.classList.remove("selected")):(d(c,"hide"),d(a.querySelectorAll(".tag-"+this.getAttribute("data-tag")),"show"),this.classList.add("selected"))})})}(document);
+  !function(a){var b=a.querySelectorAll(".post-tag"),c=a.querySelectorAll(".one-post"),d=function(a,c){[].slice.call(b).forEach(function(a,b){a.classList.remove("selected")}),"hide"==c?[].slice.call(a).forEach(function(a,b){a.classList.add("hide"),a.style.visibility="hidden"}):[].slice.call(a).forEach(function(a,b){a.classList.remove("hide"),a.style.visibility="visible"})};[].slice.call(b).forEach(function(b,e){b.addEventListener("click",function(b){b.preventDefault(),this.classList.contains("selected")?(d(c,"show"),this.classList.remove("selected")):(d(c,"hide"),d(a.querySelectorAll(".tag-"+this.getAttribute("data-tag")),"show"),this.classList.add("selected"))})})}(document);
+  var wow=new WOW({boxClass:"wow",animateClass:"animated",offset:0,mobile:!0,live:!0,scrollContainer:null});wow.init();
   </script>
 
-    <script src="/assets/wow.min.js"></script>
-<script type="text/javascript">
-!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(a,b){a.addEventListener("click",function(a){a.preventDefault(),c.classList.toggle("menu-opened")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);var wow=new WOW({boxClass:"wow",animateClass:"animated",offset:0,mobile:!0,live:!0,scrollContainer:null});wow.init();
+    <script type="text/javascript">
+!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(b,d){b.addEventListener("click",function(b){b.preventDefault(),c.classList.toggle("menu-opened"),a.body.classList.toggle("overflowh")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);
 </script>
 
 <script>
