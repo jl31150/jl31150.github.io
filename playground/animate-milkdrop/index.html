@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kaable">
+  
+  <meta content="article" property="og:type">
+
+  <meta property="og:url" content="https://thekaable.github.io/playground/animate-milkdrop/">
+  <meta property="og:title" content="Animate MilkDrop with canvas">
+  <meta property="og:description" content="Animate MilkDrop with canvas">
+  <meta property="og:image" content="https://thekaable.github.io/kaable.jpg" />
+  <title>Animate MilkDrop with canvas</title>
+  <meta name="description" content="veille technologique et expérimentations frontend">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link rel="stylesheet" href="/assets/main.css">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/assets/playground08.css">
+  
+  <link rel="stylesheet" href="/assets/animate.min.css">
+  <link rel="canonical" href="https://thekaable.github.io/playground/animate-milkdrop/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d21044">
+  <meta name="theme-color" content="#d21044">
+  </head>
+
+  <body class="playground08">
+    <!-- menu -->
+<div class="page-header">
+    <div class="header-bg-layer"></div>
+    <div class="header-container">
+        <div class="main-menu">
+            <ul id="menu-menu" class="menu">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/playground/">Playground</a></li>
+                <li><a href="/veille-technologique/">Liens</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="close-btn action-menu"> <span>Close</span></div>
+    <div class="menu-btn action-menu">
+        <div class="menu-icon-wrapper">
+            <div class="menu-icon"><span></span></div>
+            <div class="menu-icon hover-icon"><span></span></div>
+        </div>
+    </div>
+</div>
+<!-- menu -->
+
+<h1 class="title"><span>Animate MilkDrop with canvas</span></h1>
+<a href="/" class="k-home">k</a>
+
+
+        <a href="/playground/" class="return-last"><i class="fa fa-chevron-left fa-lg"></i></a>
+<div id="wrapper"><canvas id="fragment"></canvas></div>
+<script>
+let a,b;a=(new Date).getTime(),function(){function c(a){const b=a.createBuffer();a.bindBuffer(a.ARRAY_BUFFER,b);const c=new Float32Array([-1,-1,1,-1,-1,1,1,1]);a.bufferData(a.ARRAY_BUFFER,c,a.STATIC_DRAW),a.vertexAttribPointer(0,2,a.FLOAT,!1,0,0)}function d(a){a.drawArrays(a.TRIANGLE_STRIP,0,4)}function e(a,b,c){const d=a.createShader(a.VERTEX_SHADER);if(a.shaderSource(d,b),a.compileShader(d),!a.getShaderParameter(d,a.COMPILE_STATUS))throw new Error(a.getShaderInfoLog(d));const e=a.createShader(a.FRAGMENT_SHADER);if(a.shaderSource(e,c),a.compileShader(e),!a.getShaderParameter(e,a.COMPILE_STATUS))throw new Error(a.getShaderInfoLog(e));const f=a.createProgram();return a.attachShader(f,d),a.attachShader(f,e),a.linkProgram(f),a.useProgram(f),f}function f(a){const b=a.createTexture();return a.bindTexture(a.TEXTURE_2D,b),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_MIN_FILTER,a.LINEAR),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_S,a.CLAMP_TO_EDGE),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_T,a.CLAMP_TO_EDGE),b}function g(a,b){for(let c=0;c<1024;c++)b[4*c+0]=25,b[4*c+1]=25,b[4*c+2]=25,b[4*c+3]=255;a.texImage2D(a.TEXTURE_2D,0,a.RGBA,1024,1,0,a.RGBA,a.UNSIGNED_BYTE,b)}const h=document.getElementById("fragment");h.width=h.parentNode.offsetWidth,h.height=h.parentNode.offsetHeight;const i=h.getContext("webgl")||h.getContext("experimental-webgl"),j="attribute vec2 position;void main(void) {gl_Position = vec4(position, 0, 1);}",k="precision mediump float;uniform float time;uniform vec2 resolution;uniform sampler2D spectrum;void main(void) {vec3 c;float z = 0.1 * time;vec2 uv = gl_FragCoord.xy / resolution;vec2 p = uv - 0.5;p.x *= resolution.x / resolution.y;float l = 0.2 * length(p);for (int i = 0; i < 3; i++) {z += 0.07;uv += p / l * (sin(z) + 1.0) * abs(sin(l * 9.0 - z * 2.0));c[i] = 0.01 / length(abs(mod(uv, 1.0) - 0.5));}float intensity = texture2D(spectrum, vec2(l, 0.5)).x;gl_FragColor = vec4(c / l * intensity, time);}",l=e(i,j,k),m=i.getAttribLocation(l,"position");i.enableVertexAttribArray(m);const n=i.getUniformLocation(l,"time");i.uniform1f(n,0);const o=i.getUniformLocation(l,"resolution");i.uniform2f(o,h.width,h.height);const p=new Uint8Array(4096);f(i);c(i),function c(){requestAnimationFrame(c),b=(new Date).getTime(),i.uniform1f(n,(b-a)/1e3),g(i,p),d(i)}()}();
+</script>
+
+    <script type="text/javascript">
+!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(b,d){b.addEventListener("click",function(b){b.preventDefault(),c.classList.toggle("menu-opened"),a.body.classList.toggle("overflowh")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91293214-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+
+
+  </body>
+
+</html>
