@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kaable">
+  
+  <meta content="article" property="og:type">
+
+  <meta property="og:url" content="https://thekaable.github.io/playground/tilt-effect-with-javascript/">
+  <meta property="og:title" content="Tilt effect with javascript">
+  <meta property="og:description" content="Tilt effect with javascript">
+  <meta property="og:image" content="https://thekaable.github.io/kaable.jpg" />
+  <title>Tilt effect with javascript</title>
+  <meta name="description" content="veille technologique et expérimentations frontend">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link rel="stylesheet" href="/assets/main.css">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/assets/playground09.css">
+  <script src="/assets/anime.min.js"></script>
+  
+  <link rel="stylesheet" href="/assets/animate.min.css">
+  <link rel="canonical" href="https://thekaable.github.io/playground/tilt-effect-with-javascript/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d21044">
+  <meta name="theme-color" content="#d21044">
+  </head>
+
+  <body class="playground09">
+    <!-- menu -->
+<div class="page-header">
+    <div class="header-bg-layer"></div>
+    <div class="header-container">
+        <div class="main-menu">
+            <ul id="menu-menu" class="menu">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/playground/">Playground</a></li>
+                <li><a href="/veille-technologique/">Liens</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="close-btn action-menu"> <span>Close</span></div>
+    <div class="menu-btn action-menu">
+        <div class="menu-icon-wrapper">
+            <div class="menu-icon"><span></span></div>
+            <div class="menu-icon hover-icon"><span></span></div>
+        </div>
+    </div>
+</div>
+<!-- menu -->
+
+<h1 class="title"><span>Tilt effect with javascript</span></h1>
+<a href="/" class="k-home">k</a>
+
+
+        <a href="/playground/" class="return-last"><i class="fa fa-chevron-left fa-lg"></i></a>
+<div id="wrapper">
+  <div class="item1"></div>
+  <div class="item2"></div>
+  <div class="item3"></div>
+  <div class="item4"></div>
+  <div class="item5"></div>
+  <div class="item6"></div>
+</div>
+<script>
+!function(a){"use strict";function b(a,b){for(var c in b)b.hasOwnProperty(c)&&(a[c]=b[c]);return a}function c(b){var c=0,d=0;if(!b)var b=a.event;return b.pageX||b.pageY?(c=b.pageX,d=b.pageY):(b.clientX||b.clientY)&&(c=b.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,d=b.clientY+document.body.scrollTop+document.documentElement.scrollTop),{x:c,y:d}}function d(a,c){this.DOM={},this.DOM.el=a,this.options=b({},this.options),b(this.options,c),this._init()}d.prototype.options={movement:{item1:{translation:{x:0,y:0,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1200,easing:"easeOutElastic",elasticity:800}},item2:{translation:{x:25,y:25,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1e3,easing:"easeOutElastic",elasticity:800}},item3:{translation:{x:50,y:50,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1200,easing:"easeOutElastic",elasticity:800}},item4:{translation:{x:70,y:70,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1400,easing:"easeOutElastic",elasticity:800}},item5:{translation:{x:90,y:90,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1600,easing:"easeOutElastic",elasticity:800}},item6:{translation:{x:120,y:120,z:0},rotation:{x:-40,y:40,z:0},reverseAnimation:{duration:1800,easing:"easeOutElastic",elasticity:800}}}},d.prototype._init=function(){this.DOM.animatable={},this.DOM.animatable.item1=this.DOM.el.querySelector(".item1"),this.DOM.animatable.item2=this.DOM.el.querySelector(".item2"),this.DOM.animatable.item3=this.DOM.el.querySelector(".item3"),this.DOM.animatable.item4=this.DOM.el.querySelector(".item4"),this.DOM.animatable.item5=this.DOM.el.querySelector(".item5"),this.DOM.animatable.item6=this.DOM.el.querySelector(".item6"),this._initEvents()},d.prototype._initEvents=function(){var a=this;this.mouseenterFn=function(){for(var b in a.DOM.animatable)anime.remove(a.DOM.animatable[b])},this.mousemoveFn=function(b){requestAnimationFrame(function(){a._layout(b)})},this.mouseleaveFn=function(b){requestAnimationFrame(function(){for(var b in a.DOM.animatable)void 0!=a.options.movement[b]&&anime({targets:a.DOM.animatable[b],duration:void 0!=a.options.movement[b].reverseAnimation?a.options.movement[b].reverseAnimation.duration||0:1,easing:void 0!=a.options.movement[b].reverseAnimation?a.options.movement[b].reverseAnimation.easing||"linear":"linear",elasticity:void 0!=a.options.movement[b].reverseAnimation?a.options.movement[b].reverseAnimation.elasticity||null:null,scaleX:1,scaleY:1,scaleZ:1,translateX:0,translateY:0,translateZ:0,rotateX:0,rotateY:0,rotateZ:0})})},this.DOM.el.addEventListener("mousemove",this.mousemoveFn),this.DOM.el.addEventListener("mouseleave",this.mouseleaveFn),this.DOM.el.addEventListener("mouseenter",this.mouseenterFn)},d.prototype._layout=function(a){var b=c(a),d={left:document.body.scrollLeft+document.documentElement.scrollLeft,top:document.body.scrollTop+document.documentElement.scrollTop},e=this.DOM.el.getBoundingClientRect(),f={x:b.x-e.left-d.left,y:b.y-e.top-d.top};for(var g in this.DOM.animatable)if(void 0!=this.DOM.animatable[g]&&void 0!=this.options.movement[g]){var h=void 0!=this.options.movement[g]?this.options.movement[g].translation||{x:0,y:0,z:0}:{x:0,y:0,z:0},i=void 0!=this.options.movement[g]?this.options.movement[g].rotation||{x:0,y:0,z:0}:{x:0,y:0,z:0},j=function(a){for(var b in a)void 0==a[b]?a[b]=[0,0]:"number"==typeof a[b]&&(a[b]=[-1*a[b],a[b]])};j(h),j(i);var k={translation:{x:(h.x[1]-h.x[0])/e.width*f.x+h.x[0],y:(h.y[1]-h.y[0])/e.height*f.y+h.y[0],z:(h.z[1]-h.z[0])/e.height*f.y+h.z[0]},rotation:{x:(i.x[1]-i.x[0])/e.height*f.y+i.x[0],y:(i.y[1]-i.y[0])/e.width*f.x+i.y[0],z:(i.z[1]-i.z[0])/e.width*f.x+i.z[0]}};this.DOM.animatable[g].style.WebkitTransform=this.DOM.animatable[g].style.transform="translateX("+k.translation.x+"px) translateY("+k.translation.y+"px) translateZ("+k.translation.z+"px) rotateX("+k.rotation.x+"deg) rotateY("+k.rotation.y+"deg) rotateZ("+k.rotation.z+"deg)"}},a.TiltFx=d}(window),function(){new TiltFx(document.querySelector("#wrapper"),{})}();
+</script>
+
+    <script type="text/javascript">
+!function(a){var b=a.querySelectorAll(".action-menu"),c=a.querySelector(".page-header"),d=a.querySelector(".action-scroll");[].slice.call(b).forEach(function(b,d){b.addEventListener("click",function(b){b.preventDefault(),c.classList.toggle("menu-opened"),a.body.classList.toggle("overflowh")})}),window.addEventListener("scroll",function(a){d&&(d.parentNode.removeChild(d),d=!1)})}(document);
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91293214-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+
+
+  </body>
+
+</html>
